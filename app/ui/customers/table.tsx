@@ -31,24 +31,37 @@ export default async function CustomersTable({
                                  <Image
                                     src={customer.image_url}
                                     className='mr-2 rounded-full'
-                                    width={28}
-                                    height={28}
+                                    width={40}
+                                    height={40}
                                     alt={`${customer.name}'s profile picture`}
                                  />
-                                 <p>{customer.name}</p>
+                                 <div>
+                                    <p>{customer.name}</p>
+                                    <p className='text-sm text-gray-500'>
+                                       {customer.email}
+                                    </p>
+                                 </div>
                               </div>
-                              <p className='text-sm text-gray-500'>
-                                 {customer.email}
-                              </p>
-                              <p className='text-sm text-gray-500'>
-                                 <Link
-                                    href={`/dashboard/invoices?page=1&query=${customer.name}`}
-                                 >
-                                    <p>{customer.total_invoices}</p>
-                                 </Link>
-                              </p>
-                              <p className='text-sm text-gray-500'>
-                                 {customer.total_paid}
+
+                              <div className='mt-7'>
+                                 <p className='text-sm text-gray-500'>
+                                    {customer.total_invoices > 0 ? (
+                                       <Link
+                                          href={`/dashboard/invoices?page=1&query=${customer.name}`}
+                                       >
+                                          Total Invoices:{' '}
+                                          {customer.total_invoices}
+                                       </Link>
+                                    ) : (
+                                       <>
+                                          Total Invoices:{' '}
+                                          {customer.total_invoices}
+                                       </>
+                                    )}
+                                 </p>
+                              </div>
+                              <p className='text-sm text-gray-500 mt-1'>
+                                 Total Paid: {customer.total_paid}
                               </p>
                            </div>
                         </div>
@@ -111,13 +124,11 @@ export default async function CustomersTable({
                                     <Link
                                        href={`/dashboard/invoices?page=1&query=${customer.name}`}
                                     >
-                                       <p className='text-blue-700 underline'>
-                                          {customer.total_invoices}
-                                       </p>
+                                       {customer.total_invoices}
                                     </Link>
                                  </p>
                               ) : (
-                                 <p>{customer.total_invoices}</p>
+                                 <>{customer.total_invoices}</>
                               )}
                            </td>
                            <td className='whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md'>
