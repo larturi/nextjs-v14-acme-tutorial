@@ -155,6 +155,14 @@ export function TableCustomerRowSkeleton() {
          <td className='whitespace-nowrap px-3 py-3'>
             <div className='h-6 w-32 rounded bg-gray-100'></div>
          </td>
+         {/* Total Invoices */}
+         <td className='whitespace-nowrap px-3 py-3'>
+            <div className='h-6 w-32 rounded bg-gray-100'></div>
+         </td>
+         {/* Total Paid */}
+         <td className='whitespace-nowrap px-3 py-3'>
+            <div className='h-6 w-32 rounded bg-gray-100'></div>
+         </td>
          {/* Actions */}
          <td className='whitespace-nowrap py-3 pl-6 pr-3'>
             <div className='flex justify-end gap-3'>
@@ -268,6 +276,12 @@ export function CustomersTableSkeleton() {
                         </th>
                         <th scope='col' className='px-3 py-5 font-medium'>
                            Email
+                        </th>
+                        <th scope='col' className='px-3 py-5 font-medium'>
+                           Total Invoices
+                        </th>
+                        <th scope='col' className='px-3 py-5 font-medium'>
+                           Total Paid
                         </th>
                         <th
                            scope='col'

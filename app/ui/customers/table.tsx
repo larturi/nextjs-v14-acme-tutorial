@@ -1,4 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
+
 // import { UpdateInvoice, DeleteInvoice } from '@/app/ui/invoices/buttons';
 // import InvoiceStatus from '@/app/ui/invoices/status';
 import { fetchFilteredCustomers } from '@/app/lib/data';
@@ -37,6 +40,16 @@ export default async function CustomersTable({
                               <p className='text-sm text-gray-500'>
                                  {customer.email}
                               </p>
+                              <p className='text-sm text-gray-500'>
+                                 <Link
+                                    href={`/dashboard/invoices?page=1&query=${customer.name}`}
+                                 >
+                                    <p>{customer.total_invoices}</p>
+                                 </Link>
+                              </p>
+                              <p className='text-sm text-gray-500'>
+                                 {customer.total_paid}
+                              </p>
                            </div>
                         </div>
                         <div className='flex w-full items-center justify-between pt-4'>
@@ -59,6 +72,12 @@ export default async function CustomersTable({
                         </th>
                         <th scope='col' className='px-3 py-5 font-medium'>
                            Email
+                        </th>
+                        <th scope='col' className='px-3 py-5 font-medium'>
+                           Total Invoices
+                        </th>
+                        <th scope='col' className='px-4 py-5 font-medium'>
+                           Total Paid
                         </th>
                         <th scope='col' className='relative py-3 pl-6 pr-3'>
                            <span className='sr-only'>Edit</span>
@@ -85,6 +104,24 @@ export default async function CustomersTable({
                            </td>
                            <td className='whitespace-nowrap px-3 py-3'>
                               {customer.email}
+                           </td>
+                           <td className='whitespace-nowrap px-3 py-3'>
+                              {customer.total_invoices > 0 ? (
+                                 <p className='text-sm text-gray-500'>
+                                    <Link
+                                       href={`/dashboard/invoices?page=1&query=${customer.name}`}
+                                    >
+                                       <p className='text-blue-700 underline'>
+                                          {customer.total_invoices}
+                                       </p>
+                                    </Link>
+                                 </p>
+                              ) : (
+                                 <p>{customer.total_invoices}</p>
+                              )}
+                           </td>
+                           <td className='whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md'>
+                              {customer.total_paid}
                            </td>
                            <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                               <div className='flex justify-end gap-3'>
