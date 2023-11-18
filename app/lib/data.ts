@@ -3,6 +3,7 @@ import {
   CustomerField,
   CustomersTable,
   InvoiceForm,
+  CustomerForm,
   InvoicesTable,
   LatestInvoiceRaw,
   User,
@@ -259,3 +260,22 @@ export async function fetchCustomersPages(query: string) {
   }
 }
 
+export async function fetchCustomerById(id: string) {
+  noStore();
+  try {
+    const { rows } = await sql<CustomerForm>`
+      SELECT
+        id, 
+        name,
+        email
+      FROM customers
+      WHERE id = ${id};
+    `;
+
+    const customer = rows[0];
+
+    return customer;
+  } catch (error) {
+    console.error("Database Error:", error);
+  }
+}

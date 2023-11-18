@@ -8,7 +8,7 @@ import { signIn } from '@/auth';
 
 const CustomerSchema = z.object({
     id: z.string(),
-    name: z.string(),
+    name: z.string().min(3),
     email: z.string().email(),
     imageUrl: z.string().optional(),
   });
@@ -23,7 +23,7 @@ const CustomerSchema = z.object({
 
 const CreateCustomer = CustomerSchema.omit({ id: true});
 
-const UpdateCustomer = CustomerSchema.omit({ id: true });
+const UpdateCustomer = CustomerSchema.omit({ imageUrl: true });
 
 export async function authenticate(
   prevState: string | undefined,
@@ -79,9 +79,12 @@ export async function updateCustomer(
   formData: FormData,
 ) {
   const validatedFields = UpdateCustomer.safeParse({
+    id: formData.get('id'),
     name: formData.get('name'),
     email: formData.get('email'),
   });
+
+  console.log(validatedFields);
  
   if (!validatedFields.success) {
     return {
