@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
 
 import { UpdateCustomer, DeleteCustomer } from '@/app/ui/customers/buttons';
-import { fetchFilteredCustomers } from '@/app/lib/data';
+import { fetchFilteredCustomers } from '@/app/lib/data/customers-data';
 
 export default async function CustomersTable({
    query,

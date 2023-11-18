@@ -16,6 +16,13 @@ export type Customer = {
   image_url: string;
 };
 
+export type Seller = {
+  id: string;
+  name: string;
+  email: string;
+  image_url: string;
+};
+
 export type Invoice = {
   id: string; // Will be created on the database
   customer_id: string;
@@ -63,6 +70,13 @@ export type CustomersTable = {
   total_paid: number;
 };
 
+export type SellersTable = {
+  id: string;
+  name: string;
+  email: string;
+  image_url: string;
+};
+
 export type FormattedCustomersTable = {
   id: string;
   name: string;
@@ -79,6 +93,12 @@ export type CustomerField = {
   email: string;
 };
 
+export type SellerField = {
+  id: string;
+  name: string;
+  email: string;
+};
+
 export type InvoiceForm = {
   id: string;
   customer_id: string;
@@ -87,6 +107,12 @@ export type InvoiceForm = {
 };
 
 export type CustomerForm = {
+  id: string;
+  name: string;
+  email: number;
+};
+
+export type SellerForm = {
   id: string;
   name: string;
   email: number;

@@ -165,6 +165,27 @@ const invoices = [
   },
 ];
 
+const sellers = [
+  {
+    id: '1254dc9e-712f-4377-76e9-fec4b6a6444e',
+    name: 'John Doe',
+    email: 'jhon@doe.com',
+    image_url: '/sellers/john-doe.png',
+  },
+  {
+    id: '1338da9e-742f-4377-85b9-fbc4b6a3344a',
+    name: 'Bob Marley',
+    email: 'bob@marley.com',
+    image_url: '/sellers/bob-marley.png',
+  },
+  {
+    id: '3247dc9a-737f-4333-21e9-fec4b6a6442c',
+    name: 'Homer Simpson',
+    email: 'homer@simpson.com',
+    image_url: '/sellers/homer-simpson.png',
+  },
+];
+
 const revenue = [
   { month: 'Jan', revenue: 2000 },
   { month: 'Feb', revenue: 1800 },
@@ -183,6 +204,7 @@ const revenue = [
 module.exports = {
   users,
   customers,
+  sellers,
   invoices,
   revenue,
 };
