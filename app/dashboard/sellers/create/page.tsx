@@ -1,9 +1,9 @@
-import Form from '@/app/ui/customers/create-form';
+import Form from '@/app/ui/sellers/create-form';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-   title: 'Create Customer',
+   title: 'Create Seller',
 };
 
 export default async function Page() {
@@ -11,10 +11,10 @@ export default async function Page() {
       <main>
          <Breadcrumbs
             breadcrumbs={[
-               { label: 'Customers', href: '/dashboard/customers' },
+               { label: 'Sellers', href: '/dashboard/sellers' },
                {
-                  label: 'Create Customer',
-                  href: '/dashboard/customers/create',
+                  label: 'Create Seller',
+                  href: '/dashboard/sellers/create',
                   active: true,
                },
             ]}

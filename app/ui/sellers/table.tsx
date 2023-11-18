@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-// import { UpdateSeller, DeleteSeller } from '@/app/ui/sellers/buttons';
+import { UpdateSeller, DeleteSeller } from '@/app/ui/sellers/buttons';
 import { fetchFilteredSellers } from '@/app/lib/data/sellers-data';
 
 export default async function SellersTable({
@@ -45,8 +45,8 @@ export default async function SellersTable({
                         </div>
                         <div className='flex w-full items-center justify-between pt-4'>
                            <div className='flex justify-end gap-2'>
-                              {/* <UpdateSeller id={seller.id} />
-                              <DeleteSeller id={seller.id} /> */}
+                              <UpdateSeller id={seller.id} />
+                              <DeleteSeller id={seller.id} />
                            </div>
                         </div>
                      </div>
@@ -92,8 +92,8 @@ export default async function SellersTable({
                            </td>
                            <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                               <div className='flex justify-end gap-3'>
-                                 {/* <UpdateSeller id={seller.id} />
-                                 <DeleteSeller id={seller.id} /> */}
+                                 <UpdateSeller id={seller.id} />
+                                 <DeleteSeller id={seller.id} />
                               </div>
                            </td>
                         </tr>

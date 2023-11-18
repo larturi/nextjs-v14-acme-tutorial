@@ -4,9 +4,12 @@ import Pagination from '@/app/ui/customers/pagination';
 import Table from '@/app/ui/sellers/table';
 import { SellersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-// import { fetchSellersPages, fetchFilteredSellers } from '@/app/lib/data';
+import {
+   fetchSellersPages,
+   fetchFilteredSellers,
+} from '@/app/lib/data/sellers-data';
 import Search from '@/app/ui/search';
-// import { CreateSeller } from '@/app/ui/sellers/buttons';
+import { CreateSeller } from '@/app/ui/sellers/buttons';
 
 export const metadata: Metadata = {
    title: 'Sellers',
@@ -22,7 +25,7 @@ export default async function Page({
 }) {
    const query = searchParams?.query || '';
    const currentPage = Number(searchParams?.page) || 1;
-   // const totalPages = await fetchSellersPages(query);
+   const totalPages = await fetchSellersPages(query);
 
    return (
       <div className='w-full'>
@@ -31,7 +34,7 @@ export default async function Page({
          </div>
          <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
             <Search placeholder='Search sellers...' />
-            {/* <CreateSeller /> */}
+            <CreateSeller />
          </div>
          <Suspense
             key={query + currentPage}
@@ -40,7 +43,7 @@ export default async function Page({
             <Table query={query} currentPage={currentPage} />
          </Suspense>
          <div className='mt-5 flex w-full justify-center'>
-            {/* <Pagination totalPages={totalPages} /> */}
+            <Pagination totalPages={totalPages} />
          </div>
       </div>
    );
