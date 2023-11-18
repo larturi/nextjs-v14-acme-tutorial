@@ -111,7 +111,7 @@ export async function updateInvoice(
   try {
     await sql`
       UPDATE invoices
-      SET customer_id = ${customerId}, seller_id = ${sellerId}. amount = ${amountInCents}, status = ${status}
+      SET customer_id = ${customerId}, seller_id = ${sellerId}, amount = ${amountInCents}, status = ${status}
       WHERE id = ${id}
     `;
   } catch (error) {

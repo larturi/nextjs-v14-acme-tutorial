@@ -1,6 +1,6 @@
 'use client';
 
-import { CustomerField, InvoiceForm } from '@/app/lib/definitions';
+import { CustomerField, InvoiceForm, SellerField } from '@/app/lib/definitions';
 import {
    CheckIcon,
    ClockIcon,
@@ -15,9 +15,11 @@ import { useFormState } from 'react-dom';
 export default function EditInvoiceForm({
    invoice,
    customers,
+   sellers,
 }: {
    invoice: InvoiceForm;
    customers: CustomerField[];
+   sellers: SellerField[];
 }) {
    const initialState = { message: null, errors: {} };
    const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
@@ -28,6 +30,7 @@ export default function EditInvoiceForm({
          <div className='rounded-md bg-gray-50 p-4 md:p-6'>
             {/* Invoice ID */}
             <input type='hidden' name='id' value={invoice.id} />
+
             {/* Customer Name */}
             <div className='mb-4'>
                <label
@@ -49,6 +52,34 @@ export default function EditInvoiceForm({
                      {customers.map((customer) => (
                         <option key={customer.id} value={customer.id}>
                            {customer.name}
+                        </option>
+                     ))}
+                  </select>
+                  <UserCircleIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500' />
+               </div>
+            </div>
+
+            {/* Seller Name */}
+            <div className='mb-4'>
+               <label
+                  htmlFor='seller'
+                  className='mb-2 block text-sm font-medium'
+               >
+                  Choose seller
+               </label>
+               <div className='relative'>
+                  <select
+                     id='seller'
+                     name='sellerId'
+                     className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                     defaultValue={invoice.seller_id}
+                  >
+                     <option value='' disabled>
+                        Select a seller
+                     </option>
+                     {sellers.map((seller) => (
+                        <option key={seller.id} value={seller.id}>
+                           {seller.name}
                         </option>
                      ))}
                   </select>
