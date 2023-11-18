@@ -24,12 +24,17 @@ export async function fetchFilteredInvoices(
         invoices.status,
         customers.name,
         customers.email,
-        customers.image_url
+        customers.image_url,
+        sellers.id as seller_id,
+        sellers.name as seller_name
       FROM invoices
       JOIN customers ON invoices.customer_id = customers.id
+      JOIN sellers ON invoices.seller_id = sellers.id
       WHERE
         customers.name ILIKE ${`%${query}%`} OR
         customers.email ILIKE ${`%${query}%`} OR
+        sellers.name ILIKE ${`%${query}%`} OR
+        sellers.email ILIKE ${`%${query}%`} OR
         invoices.amount::text ILIKE ${`%${query}%`} OR
         invoices.date::text ILIKE ${`%${query}%`} OR
         invoices.status ILIKE ${`%${query}%`}

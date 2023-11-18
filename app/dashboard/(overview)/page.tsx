@@ -9,6 +9,8 @@ import {
    RevenueChartSkeleton,
 } from '@/app/ui/skeletons';
 
+export const revalidate = 60; // revalidate at most every one minute
+
 export default async function Page() {
    return (
       <main>

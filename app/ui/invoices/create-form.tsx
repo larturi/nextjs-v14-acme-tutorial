@@ -1,6 +1,6 @@
 'use client';
 
-import { CustomerField } from '@/app/lib/definitions';
+import { CustomerField, SellerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import {
    CheckIcon,
@@ -12,7 +12,13 @@ import { Button } from '@/app/ui/button';
 import { createInvoice } from '@/app/lib/actions/invoices-actions';
 import { useFormState } from 'react-dom';
 
-export default function Form({ customers }: { customers: CustomerField[] }) {
+export default function Form({
+   customers,
+   sellers,
+}: {
+   customers: CustomerField[];
+   sellers: SellerField[];
+}) {
    const initialState = { message: null, errors: {} };
    const [state, dispatch] = useFormState(createInvoice, initialState);
 
@@ -54,6 +60,47 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                      className='mt-2 text-sm text-red-500'
                   >
                      {state.errors.customerId.map((error: string) => (
+                        <p key={error}>{error}</p>
+                     ))}
+                  </div>
+               ) : null}
+            </div>
+
+            {/* Seller Name */}
+            <div className='mb-4'>
+               <label
+                  htmlFor='sellee'
+                  className='mb-2 block text-sm font-medium'
+               >
+                  Choose seller
+               </label>
+               <div className='relative'>
+                  <select
+                     id='seller'
+                     name='sellerId'
+                     className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                     defaultValue=''
+                     aria-describedby='seller-error'
+                  >
+                     <option value='' disabled>
+                        Select a seller
+                     </option>
+                     {sellers.map((seller) => (
+                        <option key={seller.id} value={seller.id}>
+                           {seller.name}
+                        </option>
+                     ))}
+                  </select>
+                  <UserCircleIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500' />
+               </div>
+
+               {state.errors?.sellerId ? (
+                  <div
+                     id='seller-error'
+                     aria-live='polite'
+                     className='mt-2 text-sm text-red-500'
+                  >
+                     {state.errors.sellerId.map((error: string) => (
                         <p key={error}>{error}</p>
                      ))}
                   </div>

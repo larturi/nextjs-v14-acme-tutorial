@@ -11,6 +11,9 @@ const InvoiceSchema = z.object({
     customerId: z.string({
       invalid_type_error: 'Please select a customer.',
     }),
+    sellerId: z.string({
+      invalid_type_error: 'Please select a seller.',
+    }),
     amount: z.coerce.number().gt(0, { message: 'Please enter an amount greater than $0.' }),
     status: z.enum(['pending', 'paid'], {
       invalid_type_error: 'Please select an invoice status.',
@@ -21,6 +24,7 @@ const InvoiceSchema = z.object({
   export type State = {
     errors?: {
       customerId?: string[];
+      sellerId?: string[];
       amount?: string[];
       status?: string[];
     };
@@ -48,6 +52,7 @@ export async function authenticate(
 export async function createInvoice(prevState: State, formData: FormData) {
     const validatedFields = CreateInvoice.safeParse({
       customerId: formData.get('customerId'),
+      sellerId: formData.get('sellerId'),
       amount: formData.get('amount'),
       status: formData.get('status'),
     });
@@ -61,14 +66,14 @@ export async function createInvoice(prevState: State, formData: FormData) {
     }
 
     // Prepare data for insertion into the database
-    const { customerId, amount, status } = validatedFields.data;
+    const { customerId, sellerId, amount, status } = validatedFields.data;
     const amountInCents = amount * 100;
     const date = new Date().toISOString().split('T')[0];
 
     try {
       await sql`
-            INSERT INTO invoices (customer_id, amount, status, date)
-            VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+            INSERT INTO invoices (customer_id, seller_id, amount, status, date)
+            VALUES (${customerId}, ${sellerId}, ${amountInCents}, ${status}, ${date})
         `;
     } catch (error) {
       return {
@@ -88,6 +93,7 @@ export async function updateInvoice(
 ) {
   const validatedFields = UpdateInvoice.safeParse({
     customerId: formData.get('customerId'),
+    sellerId: formData.get('sellerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
   });
@@ -99,13 +105,13 @@ export async function updateInvoice(
     };
   }
  
-  const { customerId, amount, status } = validatedFields.data;
+  const { customerId, sellerId, amount, status } = validatedFields.data;
   const amountInCents = amount * 100;
  
   try {
     await sql`
       UPDATE invoices
-      SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
+      SET customer_id = ${customerId}, seller_id = ${sellerId}. amount = ${amountInCents}, status = ${status}
       WHERE id = ${id}
     `;
   } catch (error) {

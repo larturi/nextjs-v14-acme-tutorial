@@ -26,6 +26,7 @@ export type Seller = {
 export type Invoice = {
   id: string; // Will be created on the database
   customer_id: string;
+  seller_id: string;
   amount: number; // Stored in cents
   status: 'pending' | 'paid';
   date: string;
@@ -55,6 +56,8 @@ export type InvoicesTable = {
   name: string;
   email: string;
   image_url: string;
+  seller_id: string;
+  seller_name: string;
   date: string;
   amount: number;
   status: 'pending' | 'paid';
@@ -102,6 +105,7 @@ export type SellerField = {
 export type InvoiceForm = {
   id: string;
   customer_id: string;
+  seller_id: string;
   amount: number;
   status: 'pending' | 'paid';
 };
