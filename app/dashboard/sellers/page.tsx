@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { montserrat } from '@/app/ui/fonts';
 import Pagination from '@/app/ui/customers/pagination';
 import Table from '@/app/ui/sellers/table';
-// import { SellersTableSkeleton } from '@/app/ui/skeletons';
+import { SellersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 // import { fetchSellersPages, fetchFilteredSellers } from '@/app/lib/data';
 import Search from '@/app/ui/search';
@@ -33,12 +33,12 @@ export default async function Page({
             <Search placeholder='Search sellers...' />
             {/* <CreateSeller /> */}
          </div>
-         {/* <Suspense
+         <Suspense
             key={query + currentPage}
             fallback={<SellersTableSkeleton />}
-         > */}
-         <Table query={query} currentPage={currentPage} />
-         {/* </Suspense> */}
+         >
+            <Table query={query} currentPage={currentPage} />
+         </Suspense>
          <div className='mt-5 flex w-full justify-center'>
             {/* <Pagination totalPages={totalPages} /> */}
          </div>
