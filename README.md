@@ -42,7 +42,7 @@ npm run seed
 ### Start in development mode
 
 ```bash
-npm run dev -- turbo
+npm run dev --turbo
 ```
 
 For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.

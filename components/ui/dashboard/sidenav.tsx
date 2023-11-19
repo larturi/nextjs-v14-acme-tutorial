@@ -3,7 +3,7 @@ import NavLinks from '@/components/ui/dashboard/nav-links';
 import AcmeLogo from '@/components/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut } from '@/auth';
-import { cookies } from 'next/headers';
+import { useSession } from 'next-auth/react';
 
 export default async function SideNav() {
    return (

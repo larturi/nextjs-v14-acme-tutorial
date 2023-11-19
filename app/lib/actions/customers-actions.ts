@@ -4,7 +4,6 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { signIn } from '@/auth';
 
 const CustomerSchema = z.object({
     id: z.string(),
@@ -24,20 +23,6 @@ const CustomerSchema = z.object({
 const CreateCustomer = CustomerSchema.omit({ id: true});
 
 const UpdateCustomer = CustomerSchema.omit({ imageUrl: true });
-
-export async function authenticate(
-  prevState: string | undefined,
-  formData: FormData,
-) {
-  try {
-    await signIn('credentials', Object.fromEntries(formData));
-  } catch (error) {
-    if ((error as Error).message.includes('CredentialsSignin')) {
-      return 'CredentialSignin';
-    }
-    throw error;
-  }
-}
 
 export async function createCustomer(prevState: State, formData: FormData) {
     const validatedFields = CreateCustomer.safeParse({
