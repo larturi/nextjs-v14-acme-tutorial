@@ -1,15 +1,18 @@
 import { Metadata } from 'next';
 import { montserrat } from '@/app/ui/fonts';
 import Pagination from '@/app/ui/pagination';
-import Table from '@/app/ui/customers/table';
-import { CustomersTableSkeleton } from '@/app/ui/skeletons';
+import Table from '@/app/ui/users/table';
+import { SellersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
-import { fetchCustomersPages } from '@/app/lib/data/customers-data';
+import {
+   fetchSellersPages,
+   fetchFilteredSellers,
+} from '@/app/lib/data/sellers-data';
 import Search from '@/app/ui/search';
-import { CreateCustomer } from '@/app/ui/customers/buttons';
+import { CreateSeller } from '@/app/ui/sellers/buttons';
 
 export const metadata: Metadata = {
-   title: 'Customers',
+   title: 'Sellers',
 };
 
 export default async function Page({
@@ -22,20 +25,20 @@ export default async function Page({
 }) {
    const query = searchParams?.query || '';
    const currentPage = Number(searchParams?.page) || 1;
-   const totalPages = await fetchCustomersPages(query);
+   const totalPages = await fetchSellersPages(query);
 
    return (
       <div className='w-full'>
          <div className='flex w-full items-center justify-between'>
-            <h1 className={`${montserrat.className} text-2xl`}>Customers</h1>
+            <h1 className={`${montserrat.className} text-2xl`}>Sellers</h1>
          </div>
          <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
-            <Search placeholder='Search customers...' />
-            <CreateCustomer />
+            <Search placeholder='Search sellers...' />
+            <CreateSeller />
          </div>
          <Suspense
             key={query + currentPage}
-            fallback={<CustomersTableSkeleton />}
+            fallback={<SellersTableSkeleton />}
          >
             <Table query={query} currentPage={currentPage} />
          </Suspense>

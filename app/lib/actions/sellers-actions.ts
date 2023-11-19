@@ -47,7 +47,6 @@ export async function createSeller(prevState: State, formData: FormData) {
 
     // If form validation fails, return errors early. Otherwise, continue.
     if (!validatedFields.success) {
-      console.log('errores');
       return {
         errors: validatedFields.error.flatten().fieldErrors,
         message: 'Missing Fields. Failed to Create Seller.',

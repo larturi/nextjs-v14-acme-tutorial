@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { montserrat } from '@/app/ui/fonts';
-import Pagination from '@/app/ui/customers/pagination';
+import Pagination from '@/app/ui/pagination';
 import Table from '@/app/ui/sellers/table';
 import { SellersTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
