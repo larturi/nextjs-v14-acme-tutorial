@@ -1,5 +1,5 @@
-import Form from '@/app/ui/invoices/edit-form';
-import Breadcrumbs from '@/app/ui/breadcrumbs';
+import Form from '@/components/ui/invoices/edit-form';
+import Breadcrumbs from '@/components/ui/breadcrumbs';
 import { fetchInvoiceById } from '@/app/lib/data/invoices-data';
 import { fetchCustomers } from '@/app/lib/data/customers-data';
 import { notFound } from 'next/navigation';

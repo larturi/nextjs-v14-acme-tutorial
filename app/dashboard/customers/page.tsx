@@ -1,12 +1,12 @@
 import { Metadata } from 'next';
-import { montserrat } from '@/app/ui/fonts';
-import Pagination from '@/app/ui/pagination';
-import Table from '@/app/ui/customers/table';
-import { CustomersTableSkeleton } from '@/app/ui/skeletons';
+import { montserrat } from '@/components/ui/fonts';
+import Pagination from '@/components/ui/pagination';
+import Table from '@/components/ui/customers/table';
+import { CustomersTableSkeleton } from '@/components/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchCustomersPages } from '@/app/lib/data/customers-data';
-import Search from '@/app/ui/search';
-import { CreateCustomer } from '@/app/ui/customers/buttons';
+import Search from '@/components/ui/search';
+import { CreateCustomer } from '@/components/ui/customers/buttons';
 
 export const metadata: Metadata = {
    title: 'Customers',

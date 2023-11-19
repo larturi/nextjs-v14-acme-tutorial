@@ -1,13 +1,13 @@
-import CardWrapper from '@/app/ui/dashboard/cards';
-import RevenueChart from '@/app/ui/dashboard/revenue-chart';
-import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
-import { montserrat } from '@/app/ui/fonts';
+import CardWrapper from '@/components/ui/dashboard/cards';
+import RevenueChart from '@/components/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/components/ui/dashboard/latest-invoices';
+import { montserrat } from '@/components/ui/fonts';
 import { Suspense } from 'react';
 import {
    CardsSkeleton,
    LatestInvoicesSkeleton,
    RevenueChartSkeleton,
-} from '@/app/ui/skeletons';
+} from '@/components/ui/skeletons';
 
 export const revalidate = 60; // revalidate at most every one minute
 

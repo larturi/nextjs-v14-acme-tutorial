@@ -6,7 +6,7 @@ import {
    UserGroupIcon,
    InboxIcon,
 } from '@heroicons/react/24/outline';
-import { montserrat } from '@/app/ui/fonts';
+import { montserrat } from '@/components/ui/fonts';
 
 const iconMap = {
    collected: BanknotesIcon,

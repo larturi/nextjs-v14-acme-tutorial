@@ -1,7 +1,7 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { montserrat } from '@/app/ui/fonts';
+import { montserrat } from '@/components/ui/fonts';
 import { fetchLatestInvoices } from '@/app/lib/data/dashboard-data';
 
 export default async function LatestInvoices() {

@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
-import { montserrat } from '@/app/ui/fonts';
-import Pagination from '@/app/ui/pagination';
-import Table from '@/app/ui/sellers/table';
-import { SellersTableSkeleton } from '@/app/ui/skeletons';
+import { montserrat } from '@/components/ui/fonts';
+import Pagination from '@/components/ui/pagination';
+import Table from '@/components/ui/sellers/table';
+import { SellersTableSkeleton } from '@/components/ui/skeletons';
 import { Suspense } from 'react';
 import {
    fetchSellersPages,
    fetchFilteredSellers,
 } from '@/app/lib/data/sellers-data';
-import Search from '@/app/ui/search';
-import { CreateSeller } from '@/app/ui/sellers/buttons';
+import Search from '@/components/ui/search';
+import { CreateSeller } from '@/components/ui/sellers/buttons';
 
 export const metadata: Metadata = {
    title: 'Sellers',

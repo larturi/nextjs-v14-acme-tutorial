@@ -1,7 +1,7 @@
-import '@/app/ui/global.css';
+import '@/components/ui/global.css';
 
 import { Metadata } from 'next';
-import { montserrat } from './ui/fonts';
+import { montserrat } from '@/components/ui/fonts';
 
 export const metadata: Metadata = {
    title: {

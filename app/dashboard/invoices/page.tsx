@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import { montserrat } from '@/app/ui/fonts';
-import Pagination from '@/app/ui/pagination';
-import Search from '@/app/ui/search';
-import Table from '@/app/ui/invoices/table';
-import { CreateInvoice } from '@/app/ui/invoices/buttons';
-import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
+import { montserrat } from '@/components/ui/fonts';
+import Pagination from '@/components/ui/pagination';
+import Search from '@/components/ui/search';
+import Table from '@/components/ui/invoices/table';
+import { CreateInvoice } from '@/components/ui/invoices/buttons';
+import { InvoicesTableSkeleton } from '@/components/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data/invoices-data';
 

@@ -3,7 +3,7 @@
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import { AtSymbolIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/components/ui/button';
 import { useFormState } from 'react-dom';
 import { createCustomer } from '@/app/lib/actions/customers-actions';
 

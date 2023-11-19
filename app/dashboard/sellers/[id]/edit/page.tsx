@@ -1,5 +1,5 @@
-import Form from '@/app/ui/sellers/edit-form';
-import Breadcrumbs from '@/app/ui/breadcrumbs';
+import Form from '@/components/ui/sellers/edit-form';
+import Breadcrumbs from '@/components/ui/breadcrumbs';
 import { fetchSellerById } from '@/app/lib/data/sellers-data';
 import { Metadata } from 'next';
 
