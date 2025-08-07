@@ -3,7 +3,7 @@
 ## Technologies
 
 - Next 14
-- Node 20
+- Node 22
 - Tailwindcss
 - NextAuth
 
