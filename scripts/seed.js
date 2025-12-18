@@ -6,7 +6,7 @@ const {
   revenue,
   users,
 } = require('../app/lib/placeholder-data.js');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { resolve } = require( "node:path/posix" );
 
 async function seedUsers(client) {
